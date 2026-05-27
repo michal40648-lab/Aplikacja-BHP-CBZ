@@ -433,34 +433,34 @@ if st.session_state.ekran == "menu":
     oc_bg    = "rgba(200,90,30,.3)" if oc > 0 else "rgba(255,255,255,.07)"
     oc_brd   = "border:1px solid rgba(200,90,30,.5);" if oc > 0 else ""
 
-    st.markdown(f"""
-<div style="background:#0B1F3A;border-radius:20px;padding:22px 20px;margin-bottom:14px">
-  <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
-    <div style="background:rgba(200,90,30,.25);border-radius:12px;padding:10px;font-size:24px;line-height:1">🦺</div>
-    <div>
-      <div style="color:#fff;font-size:17px;font-weight:800;letter-spacing:-.3px">CBZ Inspector</div>
-      <div style="color:rgba(255,255,255,.4);font-size:12px;margin-top:2px">Centrum Bezpiecznego Zatrudnienia</div>
-    </div>
-  </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-    <div style="background:rgba(255,255,255,.08);border-radius:12px;padding:14px">
-      <div style="font-size:28px;font-weight:800;color:#fff;line-height:1">{pc}</div>
-      <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;margin-top:5px">Protokołów</div>
-    </div>
-    <div style="background:rgba(255,255,255,.08);border-radius:12px;padding:14px">
-      <div style="font-size:28px;font-weight:800;color:#fff;line-height:1">{pz}</div>
-      <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;margin-top:5px">Zamkniętych</div>
-    </div>
-    <div style="background:rgba(255,255,255,.08);border-radius:12px;padding:14px">
-      <div style="font-size:28px;font-weight:800;color:#fff;line-height:1">{fc}</div>
-      <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;margin-top:5px">Firm</div>
-    </div>
-    <div style="background:{oc_bg};border-radius:12px;padding:14px;{oc_brd}">
-      <div style="font-size:28px;font-weight:800;color:{oc_color};line-height:1">{oc}</div>
-      <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;margin-top:5px">Zalecenia</div>
-    </div>
-  </div>
-</div>""", unsafe_allow_html=True)
+    hero_html = (
+        '<div style="background:#0B1F3A;border-radius:20px;padding:22px 20px;margin-bottom:14px">'
+        '<div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">'
+        '<div style="background:rgba(200,90,30,.25);border-radius:12px;padding:10px;font-size:24px;line-height:1">&#x1F9BA;</div>'
+        '<div>'
+        '<div style="color:#fff;font-size:17px;font-weight:800;letter-spacing:-.3px">CBZ Inspector</div>'
+        '<div style="color:rgba(255,255,255,.4);font-size:12px;margin-top:2px">Centrum Bezpiecznego Zatrudnienia</div>'
+        '</div></div>'
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'
+        '<div style="background:rgba(255,255,255,.08);border-radius:12px;padding:14px">'
+        f'<div style="font-size:28px;font-weight:800;color:#fff;line-height:1">{pc}</div>'
+        '<div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;margin-top:5px">Protokołów</div>'
+        '</div>'
+        '<div style="background:rgba(255,255,255,.08);border-radius:12px;padding:14px">'
+        f'<div style="font-size:28px;font-weight:800;color:#fff;line-height:1">{pz}</div>'
+        '<div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;margin-top:5px">Zamkniętych</div>'
+        '</div>'
+        '<div style="background:rgba(255,255,255,.08);border-radius:12px;padding:14px">'
+        f'<div style="font-size:28px;font-weight:800;color:#fff;line-height:1">{fc}</div>'
+        '<div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;margin-top:5px">Firm</div>'
+        '</div>'
+        f'<div style="background:{oc_bg};border-radius:12px;padding:14px;{oc_brd}">'
+        f'<div style="font-size:28px;font-weight:800;color:{oc_color};line-height:1">{oc}</div>'
+        '<div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;margin-top:5px">Zalecenia</div>'
+        '</div>'
+        '</div></div>'
+    )
+    st.markdown(hero_html, unsafe_allow_html=True)
 
     # Główny przycisk CTA
     if st.button("Rozpocznij nową kontrolę BHP", type="primary", use_container_width=True):
@@ -481,18 +481,20 @@ if st.session_state.ekran == "menu":
         ("🏢", "Baza firm",              "firmy",      f"{fc} firm w bazie"),
     ]:
         sub_color = "#C85A1E" if "otwartych" in sub else "#8A9BBE"
-        st.markdown(f"""
-<div style="padding:13px 16px;border-top:1px solid #F0F4F8;
-            display:flex;align-items:center;gap:12px">
-  <div style="width:38px;height:38px;border-radius:10px;background:#F0F4F8;
-              display:flex;align-items:center;justify-content:center;
-              font-size:18px;flex-shrink:0">{ico}</div>
-  <div style="flex:1">
-    <div style="font-size:15px;font-weight:600;color:#0B1F3A">{tyt}</div>
-    <div style="font-size:12px;color:{sub_color};margin-top:2px">{sub}</div>
-  </div>
-  <div style="color:#C5D0DE;font-size:20px;font-weight:300">›</div>
-</div>""", unsafe_allow_html=True)
+        item_html = (
+            '<div style="padding:13px 16px;border-top:1px solid #F0F4F8;display:flex;align-items:center;gap:12px">'
+            '<div style="width:38px;height:38px;border-radius:10px;background:#F0F4F8;'
+            'display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">'
+            + ico +
+            '</div>'
+            '<div style="flex:1">'
+            f'<div style="font-size:15px;font-weight:600;color:#0B1F3A">{tyt}</div>'
+            f'<div style="font-size:12px;color:{sub_color};margin-top:2px">{sub}</div>'
+            '</div>'
+            '<div style="color:#C5D0DE;font-size:20px;font-weight:300">&#x203A;</div>'
+            '</div>'
+        )
+        st.markdown(item_html, unsafe_allow_html=True)
         if st.button(f"Otwórz {tyt}", key=f"ma_{ekr}", use_container_width=True):
             go(ekr)
 
