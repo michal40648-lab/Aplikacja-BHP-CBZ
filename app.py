@@ -47,214 +47,127 @@ st.markdown("""
 
 # ── CSS MOBILE-FIRST ──────────────────────────────────────────
 st.markdown("""<style>
-/* === RESET === */
-*, *::before, *::after { box-sizing: border-box; }
-:root {
-  --bg:      #f0f4f8;
-  --card:    #ffffff;
-  --navy:    #0f2d4e;
-  --navy2:   #1a3a5c;
-  --orange:  #c85a1e;
-  --orange2: #a8441a;
-  --text:    #0d1b2a;
-  --muted:   #5a7a96;
-  --border:  #d0dcea;
-  --green:   #1b6e3c;
-  --red:     #b71c1c;
-  --amber:   #b45309;
-  --r:       12px;
-  --rs:      8px;
-}
+/* === UKRYJ STREAMLIT === */
+#MainMenu,footer,header,[data-testid="stToolbar"],
+[data-testid="stDecoration"],[data-testid="stStatusWidget"],
+[data-testid="collapsedControl"]{display:none!important}
 
-/* === UKRYJ STREAMLIT CHROME === */
-#MainMenu, footer, header,
-[data-testid="stToolbar"],
-[data-testid="stDecoration"],
-[data-testid="stStatusWidget"] { display: none !important; }
-
-/* === TŁO === */
-.stApp, [data-testid="stAppViewContainer"],
-[data-testid="stMain"], .main,
-.block-container {
-  background: var(--bg) !important;
-  padding: 0 !important;
-  max-width: 480px !important;
-  margin: 0 auto !important;
+/* === LAYOUT === */
+.stApp,[data-testid="stAppViewContainer"],[data-testid="stMain"],
+.main,.block-container{
+  background:#F5F7FA!important;
+  padding:0!important;
+  max-width:430px!important;
+  margin:0 auto!important;
 }
-.block-container { padding: 0 0 80px 0 !important; }
+.block-container{padding:0 0 90px 0!important}
 
 /* === SIDEBAR === */
-[data-testid="stSidebar"] {
-  background: var(--navy) !important;
-  min-width: 240px !important;
-  max-width: 260px !important;
+[data-testid="stSidebar"]{background:#0B1F3A!important;min-width:240px!important}
+[data-testid="stSidebar"] *{color:#B8CEE8!important}
+[data-testid="stSidebar"] h2,[data-testid="stSidebar"] h3{color:#fff!important}
+[data-testid="stSidebar"] .stButton button{
+  width:100%!important;background:rgba(255,255,255,.07)!important;
+  border:1px solid rgba(255,255,255,.1)!important;border-radius:10px!important;
+  color:#DCE8F5!important;font-weight:600!important;font-size:15px!important;
+  padding:12px 16px!important;text-align:left!important;margin-bottom:5px!important;
+  min-height:48px!important;
 }
-[data-testid="stSidebar"] * { color: #c8dcf0 !important; }
-[data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3 { color: #fff !important; }
-[data-testid="stSidebar"] .stButton button {
-  width: 100% !important; background: rgba(255,255,255,.07) !important;
-  border: 1px solid rgba(255,255,255,.12) !important; border-radius: 10px !important;
-  color: #ddeaf5 !important; font-weight: 600 !important; font-size: 15px !important;
-  padding: 12px 16px !important; text-align: left !important; margin-bottom: 6px !important;
-}
-[data-testid="stSidebar"] .stButton button:hover {
-  background: rgba(200,90,30,.3) !important;
-  color: #fff !important;
+[data-testid="stSidebar"] .stButton button:hover{
+  background:rgba(220,80,20,.35)!important;color:#fff!important;
 }
 
 /* === TEKST === */
 [data-testid="stMarkdownContainer"] p,
 [data-testid="stMarkdownContainer"] li,
-.stText p { color: var(--text) !important; font-size: 15px !important; }
-label, [data-testid="stWidgetLabel"] p {
-  color: var(--text) !important; font-weight: 600 !important; font-size: 14px !important;
+p,span,div{color:#0B1F3A!important}
+label,[data-testid="stWidgetLabel"] p{
+  color:#0B1F3A!important;font-weight:600!important;font-size:14px!important;
 }
-h1 { color: var(--navy) !important; font-size: 22px !important; font-weight: 800 !important; margin: 16px 0 12px !important; }
-h2 { color: var(--navy) !important; font-size: 18px !important; font-weight: 700 !important; }
-h3 { color: var(--navy2) !important; font-size: 15px !important; font-weight: 700 !important; }
+h1{color:#0B1F3A!important;font-size:20px!important;font-weight:800!important;
+   margin:12px 0 10px!important;letter-spacing:-.3px!important}
+h2{color:#0B1F3A!important;font-size:18px!important;font-weight:700!important;margin:10px 0 8px!important}
+h3{color:#1A3A5C!important;font-size:15px!important;font-weight:700!important}
 
 /* === FORMULARZE === */
 [data-testid="stTextInput"] input,
-[data-testid="stTextArea"] textarea,
-[data-testid="stNumberInput"] input {
-  background: var(--card) !important; border: 1.5px solid var(--border) !important;
-  border-radius: var(--rs) !important; color: var(--text) !important;
-  font-size: 15px !important; padding: 10px 14px !important;
+[data-testid="stTextArea"] textarea{
+  background:#fff!important;border:1.5px solid #DDE6F0!important;
+  border-radius:10px!important;color:#0B1F3A!important;
+  font-size:15px!important;padding:11px 14px!important;
 }
-[data-testid="stSelectbox"] > div > div {
-  background: var(--card) !important; border: 1.5px solid var(--border) !important;
-  border-radius: var(--rs) !important; color: var(--text) !important;
+[data-testid="stTextInput"] input:focus,
+[data-testid="stTextArea"] textarea:focus{
+  border-color:#C85A1E!important;outline:none!important;
+}
+[data-testid="stSelectbox"]>div>div{
+  background:#fff!important;border:1.5px solid #DDE6F0!important;
+  border-radius:10px!important;color:#0B1F3A!important;
 }
 
 /* === PRZYCISKI === */
-.stButton button {
-  border-radius: 10px !important; font-weight: 600 !important;
-  font-size: 15px !important; padding: 11px 18px !important;
-  border: 1.5px solid var(--border) !important;
-  background: var(--card) !important; color: var(--navy) !important;
-  width: 100% !important; transition: all .15s !important;
-  min-height: 48px !important;
+.stButton button{
+  border-radius:12px!important;font-weight:600!important;font-size:15px!important;
+  padding:12px 18px!important;border:1.5px solid #DDE6F0!important;
+  background:#fff!important;color:#0B1F3A!important;
+  width:100%!important;transition:all .15s!important;min-height:50px!important;
 }
-.stButton button:hover {
-  background: var(--navy) !important; color: #fff !important;
-  border-color: var(--navy) !important;
+.stButton button:hover{
+  background:#0B1F3A!important;color:#fff!important;border-color:#0B1F3A!important;
 }
-.stButton button[kind="primary"] {
-  background: var(--orange) !important; color: #fff !important;
-  border: none !important; font-size: 16px !important;
-  font-weight: 700 !important; min-height: 54px !important;
-  border-radius: 12px !important;
+.stButton button[kind="primary"]{
+  background:#C85A1E!important;
+  color:#fff!important;border:none!important;font-size:16px!important;
+  font-weight:700!important;min-height:56px!important;border-radius:14px!important;
 }
-.stButton button[kind="primary"]:hover { background: var(--orange2) !important; }
+.stButton button[kind="primary"]:hover{background:#A8441A!important;}
 
 /* === EXPANDER === */
-[data-testid="stExpander"] {
-  background: var(--card) !important; border: 1px solid var(--border) !important;
-  border-radius: var(--r) !important; margin-bottom: 8px !important;
+[data-testid="stExpander"]{
+  background:#fff!important;border:1px solid #E2EAF4!important;
+  border-radius:14px!important;margin-bottom:8px!important;overflow:hidden!important;
 }
-details summary { color: var(--text) !important; font-weight: 600 !important; font-size: 15px !important; }
-details summary span { color: var(--text) !important; }
+details summary{color:#0B1F3A!important;font-weight:600!important;font-size:15px!important}
+details summary span{color:#0B1F3A!important}
 
 /* === TABY === */
-[data-testid="stTabs"] [role="tablist"] {
-  background: var(--card) !important; border-radius: 10px !important;
-  border: 1px solid var(--border) !important; padding: 4px !important; gap: 4px !important;
+[data-testid="stTabs"] [role="tablist"]{
+  background:#EEF2F8!important;border-radius:12px!important;
+  border:none!important;padding:4px!important;
 }
-[data-testid="stTabs"] [role="tab"] {
-  border-radius: 8px !important; color: var(--muted) !important;
-  font-weight: 600 !important; font-size: 14px !important;
-  border: none !important; padding: 8px 14px !important;
+[data-testid="stTabs"] [role="tab"]{
+  border-radius:9px!important;color:#5A7A96!important;
+  font-weight:600!important;font-size:14px!important;border:none!important;
+  padding:9px 16px!important;
 }
-[data-testid="stTabs"] [role="tab"][aria-selected="true"] {
-  background: var(--navy) !important; color: #fff !important;
+[data-testid="stTabs"] [role="tab"][aria-selected="true"]{
+  background:#fff!important;color:#0B1F3A!important;
 }
 
 /* === KAMERA === */
-[data-testid="stCameraInput"] { border-radius: var(--r) !important; overflow: hidden !important; }
+[data-testid="stCameraInput"]{border-radius:16px!important;overflow:hidden!important}
 [data-testid="stCameraInput"] video,
-[data-testid="stCameraInput"] img {
-  width: 100% !important; max-height: 55vh !important;
-  object-fit: cover !important; border-radius: var(--r) !important;
+[data-testid="stCameraInput"] img{
+  width:100%!important;max-height:58vh!important;
+  object-fit:cover!important;border-radius:12px!important;
 }
-[data-testid="stCameraInput"] button {
-  min-height: 52px !important; font-size: 16px !important;
-  font-weight: 700 !important; border-radius: 10px !important;
+[data-testid="stCameraInput"] button{
+  min-height:54px!important;font-size:16px!important;
+  font-weight:700!important;border-radius:12px!important;
 }
 
-/* === INFO BOXY === */
-[data-testid="stAlert"] { border-radius: 10px !important; font-size: 14px !important; }
+/* === ALERTY === */
+[data-testid="stAlert"]{border-radius:12px!important;font-size:14px!important}
 
 /* === METRIC === */
-[data-testid="stMetric"] {
-  background: var(--card) !important; border: 1px solid var(--border) !important;
-  border-radius: var(--r) !important; padding: 12px 16px !important;
+[data-testid="stMetric"]{
+  background:#fff!important;border:1px solid #E2EAF4!important;
+  border-radius:14px!important;padding:14px 16px!important;
 }
-[data-testid="stMetricLabel"] p { color: var(--muted) !important; font-size: 12px !important; font-weight: 600 !important; }
-[data-testid="stMetricValue"] { color: var(--navy) !important; font-size: 28px !important; font-weight: 800 !important; }
+[data-testid="stMetricLabel"] p{color:#5A7A96!important;font-size:12px!important;font-weight:600!important}
+[data-testid="stMetricValue"]{color:#0B1F3A!important;font-size:28px!important;font-weight:800!important}
 
-/* === DOLNY PASEK NAWIGACJI === */
-.nav-bar {
-  display: flex; background: var(--navy);
-  border-radius: 16px; margin: 0 0 16px 0;
-  overflow: hidden;
-}
-.nav-item {
-  flex: 1; padding: 12px 4px 10px; text-align: center;
-  cursor: pointer; border: none; background: transparent;
-  color: rgba(255,255,255,.5); font-size: 10px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: .05em;
-  transition: all .15s; display: flex; flex-direction: column;
-  align-items: center; gap: 4px;
-}
-.nav-item .ni { font-size: 22px; line-height: 1; }
-.nav-item.active { color: #fff; background: rgba(200,90,30,.35); }
-.nav-item:hover  { color: #fff; }
-
-/* === KARTY BHP === */
-.stat-row {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 10px; margin-bottom: 14px;
-}
-.stat-box {
-  background: var(--card); border-radius: var(--r);
-  border: 1px solid var(--border); padding: 14px 16px;
-  text-align: center;
-}
-.stat-num  { font-size: 32px; font-weight: 800; color: var(--navy); line-height: 1; }
-.stat-lbl  { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
-.stat-warn { color: var(--orange); }
-
-.action-card {
-  background: var(--navy); border-radius: var(--r);
-  padding: 20px 20px; margin-bottom: 10px; cursor: pointer;
-}
-.action-card.orange { background: var(--orange); }
-.action-card .ac-icon { font-size: 28px; margin-bottom: 8px; }
-.action-card .ac-title { color: #fff; font-size: 18px; font-weight: 800; line-height: 1.2; margin-bottom: 4px; }
-.action-card .ac-sub   { color: rgba(255,255,255,.65); font-size: 13px; }
-
-.section-title {
-  font-size: 12px; font-weight: 700; color: var(--muted);
-  text-transform: uppercase; letter-spacing: .08em;
-  margin: 20px 0 10px; padding: 0 2px;
-}
-
-.list-item {
-  background: var(--card); border-radius: var(--r);
-  border: 1px solid var(--border); padding: 14px 16px;
-  margin-bottom: 8px; display: flex; align-items: center; gap: 12px;
-}
-.li-icon  { font-size: 22px; flex-shrink: 0; }
-.li-body  { flex: 1; min-width: 0; }
-.li-title { font-size: 15px; font-weight: 700; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.li-sub   { font-size: 12px; color: var(--muted); margin-top: 2px; }
-.li-badge { flex-shrink: 0; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
-.badge-k  { background: #fce8e8; color: var(--red); }
-.badge-w  { background: #fff3e0; color: #bf360c; }
-.badge-s  { background: #fffde7; color: var(--amber); }
-.badge-n  { background: #e8f5e9; color: var(--green); }
-
-hr { border: none; border-top: 1px solid var(--border) !important; margin: 16px 0 !important; }
+hr{border:none!important;border-top:1px solid #E2EAF4!important;margin:14px 0!important}
 </style>""", unsafe_allow_html=True)
 
 # ── BAZA DANYCH ────────────────────────────────────────────────
@@ -510,63 +423,93 @@ def go(ekr, **kw):
 # EKRAN: MENU
 # ══════════════════════════════════════════════════════════════
 if st.session_state.ekran == "menu":
-    pc = len(protokoly())
-    fc = len(firmy())
-    oc = len(otwarte())
-    pz = len(protokoly(st_="zamknięty"))
+    pc  = len(protokoly())
+    fc  = len(firmy())
+    oc  = len(otwarte())
+    pz  = len(protokoly(st_="zamkniety"))
 
-    # Hero header
+    # Hero card
+    oc_color = "#F5A623" if oc > 0 else "#fff"
+    oc_bg    = "rgba(200,90,30,.3)" if oc > 0 else "rgba(255,255,255,.07)"
+    oc_brd   = "border:1px solid rgba(200,90,30,.5);" if oc > 0 else ""
+
     st.markdown(f"""
-<div style="background:linear-gradient(160deg,#0f2d4e 0%,#1a3a5c 100%);
-            border-radius:16px;padding:22px 20px 20px;margin-bottom:16px">
-  <div style="color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;
-              text-transform:uppercase;opacity:.6;margin-bottom:4px">CBZ · Centrum Bezpiecznego Zatrudnienia</div>
-  <div style="color:#fff;font-size:24px;font-weight:800;line-height:1.1;margin-bottom:16px">
-    Asystent kontroli BHP 🦺
+<div style="background:#0B1F3A;border-radius:20px;padding:22px 20px;margin-bottom:14px">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+    <div style="background:rgba(200,90,30,.25);border-radius:12px;padding:10px;font-size:24px;line-height:1">🦺</div>
+    <div>
+      <div style="color:#fff;font-size:17px;font-weight:800;letter-spacing:-.3px">CBZ Inspector</div>
+      <div style="color:rgba(255,255,255,.4);font-size:12px;margin-top:2px">Centrum Bezpiecznego Zatrudnienia</div>
+    </div>
   </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px">
-    <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:10px 6px;text-align:center">
-      <div style="font-size:22px;font-weight:800;color:#fff;line-height:1">{pc}</div>
-      <div style="font-size:9px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;margin-top:3px">Protokołów</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+    <div style="background:rgba(255,255,255,.08);border-radius:12px;padding:14px">
+      <div style="font-size:28px;font-weight:800;color:#fff;line-height:1">{pc}</div>
+      <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;margin-top:5px">Protokołów</div>
     </div>
-    <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:10px 6px;text-align:center">
-      <div style="font-size:22px;font-weight:800;color:#fff;line-height:1">{pz}</div>
-      <div style="font-size:9px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;margin-top:3px">Zamkniętych</div>
+    <div style="background:rgba(255,255,255,.08);border-radius:12px;padding:14px">
+      <div style="font-size:28px;font-weight:800;color:#fff;line-height:1">{pz}</div>
+      <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;margin-top:5px">Zamkniętych</div>
     </div>
-    <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:10px 6px;text-align:center">
-      <div style="font-size:22px;font-weight:800;color:#fff;line-height:1">{fc}</div>
-      <div style="font-size:9px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;margin-top:3px">Firm</div>
+    <div style="background:rgba(255,255,255,.08);border-radius:12px;padding:14px">
+      <div style="font-size:28px;font-weight:800;color:#fff;line-height:1">{fc}</div>
+      <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;margin-top:5px">Firm</div>
     </div>
-    <div style="background:rgba(255,255,255,{'.2' if oc>0 else '.1'});
-                border-radius:10px;padding:10px 6px;text-align:center;
-                {'border:1px solid rgba(200,90,30,.7)' if oc>0 else ''}">
-      <div style="font-size:22px;font-weight:800;color:{'#f5a623' if oc>0 else '#fff'};line-height:1">{oc}</div>
-      <div style="font-size:9px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;margin-top:3px">Zalecenia</div>
+    <div style="background:{oc_bg};border-radius:12px;padding:14px;{oc_brd}">
+      <div style="font-size:28px;font-weight:800;color:{oc_color};line-height:1">{oc}</div>
+      <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;margin-top:5px">Zalecenia</div>
     </div>
   </div>
 </div>""", unsafe_allow_html=True)
 
-    # Główny przycisk
-    if st.button("📋  Zacznij nową kontrolę →", type="primary", use_container_width=True):
+    # Główny przycisk CTA
+    if st.button("Rozpocznij nową kontrolę BHP", type="primary", use_container_width=True):
         go("nowy", podekran="metryczka")
 
-    st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
 
-    # Kafelki 2x2
-    c1, c2 = st.columns(2)
-    with c1:
-        karta(f'<div style="font-size:24px;margin-bottom:8px">📁</div><div style="font-size:15px;font-weight:700;color:#0f2d4e">Archiwum</div><div style="font-size:12px;color:#5a7a96;margin-top:3px">{pc} protokołów</div>')
-        if st.button("Otwórz", key="m_a", use_container_width=True): go("archiwum")
-    with c2:
-        karta(f'<div style="font-size:24px;margin-bottom:8px">🔄</div><div style="font-size:15px;font-weight:700;color:#0f2d4e">Rekontrola</div><div style="font-size:12px;color:{"#c85a1e" if oc>0 else "#5a7a96"};margin-top:3px">{"⚠ "+str(oc)+" otwartych" if oc>0 else "Brak otwartych"}</div>')
-        if st.button("Otwórz", key="m_r", use_container_width=True): go("rekontrola")
-    c3, c4 = st.columns(2)
-    with c3:
-        karta(f'<div style="font-size:24px;margin-bottom:8px">🏢</div><div style="font-size:15px;font-weight:700;color:#0f2d4e">Firmy</div><div style="font-size:12px;color:#5a7a96;margin-top:3px">{fc} w bazie</div>')
-        if st.button("Otwórz", key="m_f", use_container_width=True): go("firmy")
-    with c4:
-        karta('<div style="font-size:24px;margin-bottom:8px">ℹ️</div><div style="font-size:15px;font-weight:700;color:#0f2d4e">O aplikacji</div><div style="font-size:12px;color:#5a7a96;margin-top:3px">CBZ Inspector v3</div>')
-        st.markdown('<div style="font-size:12px;color:#5a7a96;padding:4px 0">Michał Młynarczak<br>centrum-bhp.com.pl</div>', unsafe_allow_html=True)
+    # Lista akcji — styl iOS grouped list
+    st.markdown("""
+<div style="background:#fff;border-radius:16px;border:1px solid #E2EAF4;overflow:hidden;margin-bottom:10px">
+  <div style="padding:10px 16px 4px;font-size:11px;font-weight:700;
+              color:#8A9BBE;text-transform:uppercase;letter-spacing:.08em">Nawigacja</div>""",
+        unsafe_allow_html=True)
+
+    for ico, tyt, ekr, sub in [
+        ("📁", "Archiwum protokołów",  "archiwum",   f"{pc} protokołów"),
+        ("🔄", "Rekontrola",            "rekontrola", f"{'⚠ '+str(oc)+' otwartych' if oc>0 else 'Wszystko zamknięte'}"),
+        ("🏢", "Baza firm",              "firmy",      f"{fc} firm w bazie"),
+    ]:
+        sub_color = "#C85A1E" if "otwartych" in sub else "#8A9BBE"
+        st.markdown(f"""
+<div style="padding:13px 16px;border-top:1px solid #F0F4F8;
+            display:flex;align-items:center;gap:12px">
+  <div style="width:38px;height:38px;border-radius:10px;background:#F0F4F8;
+              display:flex;align-items:center;justify-content:center;
+              font-size:18px;flex-shrink:0">{ico}</div>
+  <div style="flex:1">
+    <div style="font-size:15px;font-weight:600;color:#0B1F3A">{tyt}</div>
+    <div style="font-size:12px;color:{sub_color};margin-top:2px">{sub}</div>
+  </div>
+  <div style="color:#C5D0DE;font-size:20px;font-weight:300">›</div>
+</div>""", unsafe_allow_html=True)
+        if st.button(f"Otwórz {tyt}", key=f"ma_{ekr}", use_container_width=True):
+            go(ekr)
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    # Ukryj przyciski tekstowe - są tylko do obsługi kliknięć
+    st.markdown("""
+<style>
+button[data-testid="baseButton-secondary"]:has(> div > p:is([data-text="Otwórz Archiwum protokołów"],
+[data-text="Otwórz Rekontrola"],[data-text="Otwórz Baza firm"])) {
+  position:relative!important;margin-top:-62px!important;height:56px!important;
+  opacity:0!important;z-index:10!important;
+}
+</style>""", unsafe_allow_html=True)
+
+
+
 
 # ══════════════════════════════════════════════════════════════
 # EKRAN: FIRMY
@@ -576,30 +519,35 @@ elif st.session_state.ekran == "firmy":
     with col_back:
         if st.button("← Wróć"): go("menu")
     with col_title:
-        st.markdown("## 🏢 Firmy")
+        st.markdown("## Firmy i klienci")
 
-    with st.expander("➕ Dodaj / edytuj firmę", expanded=not bool(firmy())):
+    with st.expander("Dodaj / edytuj firmę", expanded=not bool(firmy())):
         with st.form("ff"):
             fn  = st.text_input("Nazwa firmy *")
             c1,c2 = st.columns(2)
             with c1: fnip = st.text_input("NIP"); feml = st.text_input("E-mail")
             with c2: fkon = st.text_input("Kontakt"); fadr = st.text_area("Adres",height=80)
-            if st.form_submit_button("💾 Zapisz", use_container_width=True):
+            if st.form_submit_button("Zapisz firmę", use_container_width=True):
                 if fn:
                     qw("INSERT INTO firmy(nazwa,nip,adres,kontakt,email) VALUES(?,?,?,?,?) ON CONFLICT(nazwa) DO UPDATE SET nip=excluded.nip,adres=excluded.adres,kontakt=excluded.kontakt,email=excluded.email",(fn,fnip,fadr,fkon,feml))
-                    st.success(f"✅ {fn}"); st.rerun()
+                    st.success(f"Zapisano: {fn}"); st.rerun()
                 else: st.error("Podaj nazwę")
 
     fl = firmy()
     if fl:
-        section(f"{len(fl)} firm w bazie")
+        st.markdown(f"**{len(fl)} firm w bazie**")
         for fid, fnaz, fnip, fadr, fkon, feml in fl:
-            with st.expander(f"🏢 {fnaz}"):
+            with st.expander(f"🏢  {fnaz}"):
                 c1,c2 = st.columns(2)
-                with c1: st.write(f"**NIP:** {fnip or '–'}"); st.write(f"**Adres:** {fadr or '–'}")
-                with c2: st.write(f"**Kontakt:** {fkon or '–'}"); st.write(f"**E-mail:** {feml or '–'}")
-                if st.button("📋 Nowy protokół", key=f"fp_{fid}", use_container_width=True):
-                    st.session_state["firma_id_preset"] = fid; go("nowy", podekran="metryczka")
+                with c1:
+                    st.write(f"**NIP:** {fnip or '–'}")
+                    st.write(f"**Adres:** {fadr or '–'}")
+                with c2:
+                    st.write(f"**Kontakt:** {fkon or '–'}")
+                    st.write(f"**E-mail:** {feml or '–'}")
+                if st.button("Nowy protokół dla tej firmy", key=f"fp_{fid}", use_container_width=True):
+                    st.session_state["firma_id_preset"] = fid
+                    go("nowy", podekran="metryczka")
     else:
         st.info("Brak firm. Dodaj pierwszą firmę powyżej.")
 
@@ -608,13 +556,12 @@ elif st.session_state.ekran == "firmy":
 # ══════════════════════════════════════════════════════════════
 elif st.session_state.ekran == "nowy":
 
-    # ── METRYCZKA ──────────────────────────────────────────────
     if st.session_state.podekran == "metryczka":
         col_back, col_title = st.columns([1, 4])
         with col_back:
             if st.button("← Wróć"): go("menu")
         with col_title:
-            st.markdown("## 📋 Nowa kontrola")
+            st.markdown("## Nowa kontrola")
 
         fl = firmy()
         nazwy = [f[1] for f in fl]
@@ -627,11 +574,12 @@ elif st.session_state.ekran == "nowy":
         wyb = st.selectbox("Firma *", ["– wybierz –"] + nazwy, index=idx)
         if wyb == "– wybierz –":
             st.info("Wybierz firmę lub dodaj ją w module Firmy.")
-            if st.button("➕ Dodaj firmę", use_container_width=True): go("firmy")
+            if st.button("Dodaj nową firmę", use_container_width=True): go("firmy")
         else:
-            fr = next(f for f in fl if f[1]==wyb)
+            fr  = next(f for f in fl if f[1]==wyb)
             fid = fr[0]
-            rok = datetime.date.today().year; mies = datetime.date.today().month
+            rok = datetime.date.today().year
+            mies= datetime.date.today().month
             c1,c2 = st.columns(2)
             with c1:
                 nr   = st.text_input("Nr protokołu", value=f"CBZ/BHP/{rok}/{mies:02d}/001")
@@ -641,10 +589,10 @@ elif st.session_state.ekran == "nowy":
                 miej = st.text_input("Miejsce / wydział", placeholder="np. Hala W-2")
                 obs  = st.text_input("Obszar", placeholder="np. Spawalnia")
                 osob = st.text_input("Osoby obecne", value=fr[4] or "")
-            rod  = st.text_input("Rodzaj kontroli", value="Bieżąca kontrola warunków pracy")
-            ogr  = st.text_input("Ograniczenia", value="Brak")
+            rod = st.text_input("Rodzaj kontroli", value="Bieżąca kontrola warunków pracy")
+            ogr = st.text_input("Ograniczenia", value="Brak")
 
-            if st.button("✅ Utwórz i przejdź do ustaleń →", type="primary", use_container_width=True):
+            if st.button("Utwórz protokół i przejdź do ustaleń", type="primary", use_container_width=True):
                 qw("INSERT INTO protokoly(firma_id,nr,data,miejsce,obszar,kontrolujacy,osoby,rodzaj,ograniczenia) VALUES(?,?,?,?,?,?,?,?,?)",
                    (fid,nr,str(data),miej,obs,kontr,osob,rod,ogr))
                 pid = q("SELECT last_insert_rowid()",one=True)[0]
@@ -653,7 +601,6 @@ elif st.session_state.ekran == "nowy":
                 st.session_state.podekran = "ustalenia"
                 st.rerun()
 
-    # ── USTALENIA ──────────────────────────────────────────────
     elif st.session_state.podekran == "ustalenia":
         pid   = st.session_state.protokol_id
         prow  = q("SELECT p.*,f.nazwa FROM protokoly p JOIN firmy f ON f.id=p.firma_id WHERE p.id=?",(pid,),one=True)
@@ -663,19 +610,17 @@ elif st.session_state.ekran == "nowy":
         with col_back:
             if st.button("← Menu"): go("menu")
         with col_title:
-            st.markdown(f"## 📸 {prow[12]}")
+            st.markdown(f"## {prow[12]}")
         st.caption(f"{prow[2]}  ·  {prow[3]}  ·  {len(ust_l)} ustaleń")
 
-        # Liczniki kompaktowe
         c1,c2,c3 = st.columns(3)
         wys = sum(1 for u in ust_l if u[4] in("Wysoki","Krytyczny"))
         c1.metric("Ustaleń", len(ust_l))
-        c2.metric("Wysoki/Krytyczy", wys)
+        c2.metric("Wysoki/Kryt.", wys)
         c3.metric("Status", prow[10].upper())
         st.markdown("---")
 
-        # KAMERA
-        st.markdown("### 📷 Zdjęcie")
+        st.markdown("### Zdjęcie")
         if f"ai_ok_{st.session_state.cam_key}" not in st.session_state:
             st.session_state[f"ai_ok_{st.session_state.cam_key}"] = False
 
@@ -683,18 +628,18 @@ elif st.session_state.ekran == "nowy":
                                 key=f"cam_{st.session_state.cam_key}")
 
         if foto and not st.session_state.get(f"ai_ok_{st.session_state.cam_key}"):
-            with st.spinner("🤖 Analizuję zdjęcie..."):
+            with st.spinner("Analizuję zdjęcie..."):
                 try:
                     ai = analizuj(foto.getvalue())
-                    st.session_state["ai_z"] = ai.get("zagrozenie","")
-                    st.session_state["ai_o"] = ai.get("opis_niezgodnosci","")
+                    st.session_state["ai_z"]   = ai.get("zagrozenie","")
+                    st.session_state["ai_o"]   = ai.get("opis_niezgodnosci","")
                     st.session_state["ai_zal"] = ai.get("zalecenie","")
                     st.session_state[f"ai_ok_{st.session_state.cam_key}"] = True
-                    st.success("✅ Analiza gotowa — sprawdź i zatwierdź pola")
+                    st.success("Analiza gotowa — sprawdź i zatwierdź pola")
                 except Exception as ex:
                     st.warning(f"AI niedostępne: {ex}")
 
-        st.markdown("### ✏️ Dane ustalenia")
+        st.markdown("### Dane ustalenia")
         c1,c2 = st.columns(2)
         with c1:
             ob_u = st.text_input("Lokalizacja", placeholder="np. Tokarka nr 3")
@@ -705,11 +650,11 @@ elif st.session_state.ekran == "nowy":
             ter  = st.date_input("Termin", datetime.date.today()+datetime.timedelta(days=7))
             sta  = st.selectbox("Status",["Nowe","W trakcie","Zamknięte"])
 
-        ryz = st.text_input("Zagrożenie",       value=st.session_state.get("ai_z",""))
-        opi = st.text_area("Stan faktyczny",     value=st.session_state.get("ai_o",""), height=100)
-        zal = st.text_area("Zalecenie",          value=st.session_state.get("ai_zal",""), height=100)
+        ryz = st.text_input("Zagrożenie",   value=st.session_state.get("ai_z",""))
+        opi = st.text_area("Stan faktyczny",value=st.session_state.get("ai_o",""), height=100)
+        zal = st.text_area("Zalecenie",     value=st.session_state.get("ai_zal",""), height=100)
 
-        if st.button("➕ Zapisz ustalenie", type="primary", use_container_width=True):
+        if st.button("Zapisz ustalenie", type="primary", use_container_width=True):
             if opi and zal:
                 fb = foto.getvalue() if foto else None
                 qw("INSERT INTO ustalenia(protokol_id,obszar,kategoria,priorytet,status,odpowiedzialny,termin,ryzyko,opis,zalecenie,foto) VALUES(?,?,?,?,?,?,?,?,?,?,?)",
@@ -717,16 +662,17 @@ elif st.session_state.ekran == "nowy":
                 ck = st.session_state.cam_key
                 st.session_state.cam_key = ck+1
                 for k in ["ai_z","ai_o","ai_zal",f"ai_ok_{ck}"]: st.session_state.pop(k,None)
-                st.success("✅ Zapisano!"); st.rerun()
+                st.success("Zapisano!"); st.rerun()
             else:
                 st.error("Uzupełnij 'Stan faktyczny' i 'Zalecenie'")
 
-        # Lista dodanych
         if ust_l:
             st.markdown("---")
-            section(f"Dodane ustalenia ({len(ust_l)})")
+            st.markdown(f"**Dodane ustalenia ({len(ust_l)})**")
             for u in ust_l:
-                with st.expander(f"{badge(u[4])} {u[2] or 'Ustalenie'} — {u[3]}", expanded=False):
+                bmap = {"Krytyczny":"badge-k","Wysoki":"badge-w","Sredni":"badge-s","Niski":"badge-n"}
+                bcls = bmap.get(u[4],"badge-n")
+                with st.expander(f"[{u[4]}]  {u[2] or 'Ustalenie'}  —  {u[3]}"):
                     st.write(f"**Zagrożenie:** {u[8]}")
                     st.write(f"**Opis:** {u[9]}")
                     st.write(f"**Zalecenie:** {u[10]}")
@@ -735,13 +681,12 @@ elif st.session_state.ekran == "nowy":
         st.markdown("---")
         c1,c2 = st.columns(2)
         with c1:
-            if st.button("🏁 Zamknij i eksportuj", use_container_width=True):
-                qw("UPDATE protokoly SET status='zamknięty' WHERE id=?",(pid,))
+            if st.button("Zamknij i eksportuj", use_container_width=True):
+                qw("UPDATE protokoly SET status='zamkniety' WHERE id=?",(pid,))
                 st.session_state.podekran = "eksport"; st.rerun()
         with c2:
-            if st.button("💾 Zapisz szkic", use_container_width=True): go("menu")
+            if st.button("Zapisz szkic", use_container_width=True): go("menu")
 
-    # ── EKSPORT ────────────────────────────────────────────────
     elif st.session_state.podekran == "eksport":
         pid  = st.session_state.protokol_id
         prow = q("SELECT p.*,f.nazwa,f.nip,f.adres,f.kontakt,f.email FROM protokoly p JOIN firmy f ON f.id=p.firma_id WHERE p.id=?",(pid,),one=True)
@@ -751,45 +696,51 @@ elif st.session_state.ekran == "nowy":
         with col_back:
             if st.button("← Menu"): go("menu")
         with col_title:
-            st.markdown("## 📤 Eksport")
+            st.markdown("## Eksport protokołu")
 
-        st.success(f"✅ Protokół zamknięty — {len(ust_l)} ustaleń")
-        karta(f'<b>{prow[2]}</b><br><span style="color:#5a7a96;font-size:13px">{prow[12]} · {prow[3]}</span>')
+        st.success(f"Protokół zamknięty — {len(ust_l)} ustaleń")
 
-        tab1, tab2, tab3 = st.tabs(["📄 Word", "📕 PDF", "📧 E-mail"])
+        tab1, tab2, tab3 = st.tabs(["Word", "PDF", "E-mail"])
 
         with tab1:
-            if st.button("🔧 Generuj Word", use_container_width=True):
+            st.markdown("**Protokół Word** — edytowalny szablon CBZ")
+            if st.button("Generuj Word", use_container_width=True):
                 with st.spinner("Generowanie..."):
                     wb = gen_word(pid)
                 fn = f"Protokol_{prow[12].replace(' ','_')}_{prow[3]}.docx"
-                st.download_button("⬇️ Pobierz .docx", wb, fn,
+                st.download_button("Pobierz .docx", wb, fn,
                     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                     use_container_width=True)
 
         with tab2:
-            if st.button("🔧 Generuj PDF", use_container_width=True):
+            st.markdown("**Protokół PDF** — gotowy do druku")
+            if st.button("Generuj PDF", use_container_width=True):
                 with st.spinner("Generowanie PDF..."):
                     pb = gen_pdf(pid)
                 fn = f"Protokol_{prow[12].replace(' ','_')}_{prow[3]}.pdf"
-                st.download_button("⬇️ Pobierz PDF", pb, fn, "application/pdf", use_container_width=True)
+                st.download_button("Pobierz PDF", pb, fn, "application/pdf", use_container_width=True)
 
         with tab3:
             adr = st.text_input("E-mail odbiorcy", value=prow[16] or "")
-            tem = st.text_input("Temat", value=f"Protokół BHP {prow[2]} — {prow[12]}")
-            tre = st.text_area("Treść", value=f"Dzień dobry,\n\nW załączeniu protokół BHP z {prow[3]}, {prow[12]}.\n\nZ poważaniem\n{prow[6]}", height=120)
-            fmt = st.radio("Załącznik", ["PDF","Word"], horizontal=True)
+            tem = st.text_input("Temat", value=f"Protokol BHP {prow[2]} — {prow[12]}")
+            tre = st.text_area("Tresc", value=f"Dzien dobry,
+
+W zalaczeniu protokol BHP z {prow[3]}, {prow[12]}.
+
+Z powazaniem
+{prow[6]}", height=120)
+            fmt = st.radio("Zalacznik", ["PDF","Word"], horizontal=True)
             c1,c2 = st.columns(2)
             with c1:
-                if st.button("📧 Wyślij", type="primary", use_container_width=True):
-                    with st.spinner("Wysyłanie..."):
+                if st.button("Wyslij e-mail", type="primary", use_container_width=True):
+                    with st.spinner("Wysylanie..."):
                         att = gen_pdf(pid) if fmt=="PDF" else gen_word(pid)
                         ext = "pdf" if fmt=="PDF" else "docx"
                         ok,info = wyslij(adr,tem,tre,att,f"Protokol_{prow[3]}.{ext}")
-                    st.success("✅ Wysłano!") if ok else st.error(f"❌ {info}")
+                    st.success("Wyslano!") if ok else st.error(f"Blad: {info}")
             with c2:
                 ml = f"mailto:{adr}?subject={urllib.parse.quote(tem)}&body={urllib.parse.quote(tre)}"
-                st.link_button("📬 Klient pocztowy", ml, use_container_width=True)
+                st.link_button("Klient pocztowy", ml, use_container_width=True)
 
 # ══════════════════════════════════════════════════════════════
 # EKRAN: ARCHIWUM
@@ -799,12 +750,12 @@ elif st.session_state.ekran == "archiwum":
     with col_back:
         if st.button("← Wróć"): go("menu")
     with col_title:
-        st.markdown("## 📁 Archiwum")
+        st.markdown("## Archiwum protokołów")
 
     fl = firmy(); nazwy = [f[1] for f in fl]
     c1,c2 = st.columns(2)
     with c1: ff = st.selectbox("Firma", ["Wszystkie"]+nazwy)
-    with c2: fs = st.selectbox("Status", ["Wszystkie","szkic","zamknięty"])
+    with c2: fs = st.selectbox("Status", ["Wszystkie","szkic","zamkniety"])
     fid_f = next((f[0] for f in fl if f[1]==ff), None) if ff!="Wszystkie" else None
     st_f  = None if fs=="Wszystkie" else fs
     pl = protokoly(fid_f, st_f)
@@ -812,29 +763,34 @@ elif st.session_state.ekran == "archiwum":
     if not pl:
         st.info("Brak protokołów.")
     else:
-        section(f"{len(pl)} protokołów")
+        st.markdown(f"**{len(pl)} protokołów**")
         for p in pl:
-            ico = "🔒" if p[5]=="zamknięty" else "✏️"
-            with st.expander(f"{ico} {p[2]}  ·  {p[1]}  ·  {p[7]} ust."):
+            ico = "🔒" if p[5]=="zamkniety" else "✏️"
+            with st.expander(f"{ico}  {p[2]}  —  {p[1]}  ({p[7]} ust.)"):
                 c1,c2 = st.columns(2)
-                with c1: st.write(f"**Firma:** {p[1]}"); st.write(f"**Data:** {p[3]}"); st.write(f"**Status:** {p[5]}")
-                with c2: st.write(f"**Miejsce:** {p[4] or '–'}"); st.write(f"**Kontrolujący:** {p[6]}")
+                with c1:
+                    st.write(f"**Firma:** {p[1]}")
+                    st.write(f"**Data:** {p[3]}")
+                    st.write(f"**Status:** {p[5]}")
+                with c2:
+                    st.write(f"**Miejsce:** {p[4] or '–'}")
+                    st.write(f"**Kontrolujący:** {p[6]}")
                 ca,cb,cc = st.columns(3)
                 with ca:
-                    if st.button("📄 Word", key=f"ew_{p[0]}", use_container_width=True):
+                    if st.button("Word", key=f"ew_{p[0]}", use_container_width=True):
                         w = gen_word(p[0])
-                        st.download_button("⬇️ .docx", w,
+                        st.download_button("Pobierz .docx", w,
                             f"Protokol_{p[1].replace(' ','_')}_{p[3]}.docx",
                             "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                             key=f"dw_{p[0]}")
                 with cb:
-                    if st.button("📕 PDF", key=f"ep_{p[0]}", use_container_width=True):
+                    if st.button("PDF", key=f"ep_{p[0]}", use_container_width=True):
                         pb = gen_pdf(p[0])
-                        st.download_button("⬇️ PDF", pb,
+                        st.download_button("Pobierz PDF", pb,
                             f"Protokol_{p[1].replace(' ','_')}_{p[3]}.pdf",
                             "application/pdf", key=f"dp_{p[0]}")
                 with cc:
-                    if st.button("✏️ Edytuj", key=f"ed_{p[0]}", use_container_width=True):
+                    if st.button("Edytuj", key=f"ed_{p[0]}", use_container_width=True):
                         st.session_state.protokol_id = p[0]
                         st.session_state.ekran = "nowy"
                         st.session_state.podekran = "ustalenia"
@@ -848,36 +804,35 @@ elif st.session_state.ekran == "rekontrola":
     with col_back:
         if st.button("← Wróć"): go("menu")
     with col_title:
-        st.markdown("## 🔄 Rekontrola")
+        st.markdown("## Rekontrola")
 
     ot = otwarte()
     if not ot:
-        st.success("✅ Wszystkie zalecenia zamknięte!")
+        st.success("Wszystkie zalecenia zamknięte!")
     else:
-        for pri_gr in ["Krytyczny","Wysoki","Średni","Niski"]:
+        for pri_gr in ["Krytyczny","Wysoki","Sredni","Niski"]:
             gr = [z for z in ot if z[5]==pri_gr]
             if not gr: continue
-            section(f"{pri_gr} — {len(gr)} zaleceń")
+            st.markdown(f"**{pri_gr} — {len(gr)} zaleceń**")
             for z in gr:
                 prze = False
-                try:
-                    prze = datetime.date.fromisoformat(z[7]) < datetime.date.today()
+                try: prze = datetime.date.fromisoformat(z[7]) < datetime.date.today()
                 except: pass
-                with st.expander(f"{'🚨' if prze else '⚠️'} {z[1]}  ·  {z[4] or '–'}  {badge(z[5])}", expanded=(pri_gr=="Krytyczny")):
+                with st.expander(f"{'Przeterminowane' if prze else ''} {z[1]}  —  {z[4] or '–'}  [{z[5]}]", expanded=(pri_gr=="Krytyczny")):
                     c1,c2 = st.columns(2)
                     with c1:
-                        st.write(f"**Zagrożenie:** {z[8] or '–'}")
+                        st.write(f"**Zagrozenie:** {z[8] or '–'}")
                         st.write(f"**Zalecenie:** {z[9]}")
-                        st.write(f"**Protokół:** {z[2]} z {z[3]}")
+                        st.write(f"**Protokol:** {z[2]} z {z[3]}")
                     with c2:
-                        st.write(f"**Odp.:** {z[6] or '–'}")
-                        if prze: st.error(f"Termin: {z[7]} ⚠ MINĄŁ")
+                        st.write(f"**Odpowiedzialny:** {z[6] or '–'}")
+                        if prze: st.error(f"Termin: {z[7]} — MINAL!")
                         else: st.write(f"**Termin:** {z[7] or '–'}")
-                    ns = st.selectbox("Status",["Nowe","W trakcie","Zamknięte"],
-                                       index=["Nowe","W trakcie","Zamknięte"].index(z[10])
-                                       if z[10] in ["Nowe","W trakcie","Zamknięte"] else 0,
+                    ns = st.selectbox("Status",["Nowe","W trakcie","Zamkniete"],
+                                       index=["Nowe","W trakcie","Zamkniete"].index(z[10])
+                                       if z[10] in ["Nowe","W trakcie","Zamkniete"] else 0,
                                        key=f"rs_{z[0]}")
                     if ns != z[10]:
-                        if st.button(f"💾 Zapisz → {ns}", key=f"rsv_{z[0]}", use_container_width=True):
+                        if st.button(f"Zapisz status: {ns}", key=f"rsv_{z[0]}", use_container_width=True):
                             qw("UPDATE ustalenia SET status=? WHERE id=?",(ns,z[0]))
-                            st.success("✅ Zaktualizowano"); st.rerun()
+                            st.success("Zaktualizowano"); st.rerun()
