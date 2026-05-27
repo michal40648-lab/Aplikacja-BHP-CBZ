@@ -600,218 +600,168 @@ def wyslij_email(do, temat, tresc, zalacznik_bytes, nazwa_pliku):
 # ─────────────────────────────────────────────
 st.markdown("""
 <style>
-/* ── RESET I BAZA ── */
-html, body, [data-testid="stAppViewContainer"] {
-    background-color: #f0f4f8 !important;
-}
-/* Wszystkie teksty widoczne */
-[data-testid="stAppViewContainer"] h1,
-[data-testid="stAppViewContainer"] h2,
-[data-testid="stAppViewContainer"] h3,
-[data-testid="stAppViewContainer"] p,
-[data-testid="stAppViewContainer"] label,
-[data-testid="stAppViewContainer"] .stMarkdown,
-[data-testid="stAppViewContainer"] .stText,
-[data-testid="stAppViewContainer"] div {
-    color: #1a2a3a !important;
+/* ── RESET TŁO ── */
+.stApp, [data-testid="stAppViewContainer"],
+[data-testid="stMain"], .main, .block-container {
+    background: #eef2f7 !important;
 }
 
 /* ── SIDEBAR ── */
 [data-testid="stSidebar"] {
     background: #0f2d4e !important;
-    border-right: none !important;
 }
-[data-testid="stSidebar"] h1,
-[data-testid="stSidebar"] h2,
-[data-testid="stSidebar"] h3,
+[data-testid="stSidebar"] section {
+    background: #0f2d4e !important;
+}
+/* Tekst w sidebarze */
 [data-testid="stSidebar"] p,
-[data-testid="stSidebar"] div,
 [data-testid="stSidebar"] span,
+[data-testid="stSidebar"] div,
 [data-testid="stSidebar"] label {
     color: #c8d8ea !important;
 }
-[data-testid="stSidebar"] .stButton > button {
-    width: 100% !important;
-    background: rgba(255,255,255,.06) !important;
-    border: 1px solid rgba(255,255,255,.12) !important;
-    border-radius: 10px !important;
-    color: #e8f0f8 !important;
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 {
+    color: #ffffff !important;
+}
+/* Przyciski w sidebarze */
+[data-testid="stSidebar"] .stButton button {
+    background: rgba(255,255,255,.07) !important;
+    border: 1px solid rgba(255,255,255,.14) !important;
+    border-radius: 9px !important;
+    color: #ddeaf5 !important;
     font-weight: 600 !important;
     font-size: 14px !important;
-    margin-bottom: 4px !important;
-    text-align: left !important;
     padding: 10px 14px !important;
-    transition: all .15s !important;
+    width: 100% !important;
+    text-align: left !important;
+    margin-bottom: 4px !important;
+    transition: all .18s !important;
 }
-[data-testid="stSidebar"] .stButton > button:hover {
+[data-testid="stSidebar"] .stButton button:hover {
     background: rgba(200,90,30,.3) !important;
-    border-color: #c85a1e !important;
+    border-color: rgba(200,90,30,.5) !important;
     color: #fff !important;
 }
 
-/* ── KARTY MENU ── */
-.cbz-card {
-    background: #ffffff;
-    border-radius: 16px;
-    border: 1px solid #dde6f0;
-    padding: 22px 24px;
-    margin-bottom: 16px;
-    box-shadow: 0 2px 8px rgba(15,45,78,.06);
+/* ── TEKST GŁÓWNY (jasne tło) ── */
+[data-testid="stMain"] p,
+[data-testid="stMain"] span,
+[data-testid="stMain"] li,
+[data-testid="stMain"] div,
+[data-testid="stMarkdownContainer"] p,
+[data-testid="stMarkdownContainer"] span {
+    color: #1a2636 !important;
 }
-.cbz-card h3 {
+[data-testid="stMain"] h1 {
     color: #0f2d4e !important;
-    font-size: 17px !important;
-    margin-bottom: 6px !important;
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    border-bottom: 3px solid #c85a1e !important;
+    padding-bottom: 8px !important;
+    margin-bottom: 18px !important;
 }
-.cbz-card p, .cbz-card div {
-    color: #4a6080 !important;
-    font-size: 14px !important;
+[data-testid="stMain"] h2 {
+    color: #0f2d4e !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+}
+[data-testid="stMain"] h3 {
+    color: #1a3a5c !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
 }
 
-/* ── PRZYCISKI GLOBALNE ── */
-.stButton > button {
-    border-radius: 10px !important;
+/* ── PRZYCISKI GŁÓWNE ── */
+.stButton button {
+    border-radius: 9px !important;
     font-weight: 600 !important;
     font-size: 14px !important;
-    padding: 10px 18px !important;
-    border: 1px solid #c0cfe0 !important;
+    border: 1px solid #c8d8ec !important;
     background: #ffffff !important;
     color: #0f2d4e !important;
-    transition: all .15s !important;
+    transition: all .18s !important;
 }
-.stButton > button:hover {
+.stButton button:hover {
     background: #0f2d4e !important;
     color: #ffffff !important;
     border-color: #0f2d4e !important;
 }
-/* Primary button */
-.stButton > button[kind="primary"],
-button[data-testid="baseButton-primary"] {
+button[kind="primary"], .stButton button[kind="primary"] {
     background: #c85a1e !important;
-    color: #ffffff !important;
+    color: #fff !important;
     border: none !important;
-    border-radius: 12px !important;
+    border-radius: 11px !important;
     font-size: 15px !important;
     font-weight: 700 !important;
-    padding: 13px 20px !important;
-    box-shadow: 0 3px 10px rgba(200,90,30,.25) !important;
+    box-shadow: 0 3px 10px rgba(200,90,30,.3) !important;
 }
-.stButton > button[kind="primary"]:hover {
-    background: #a8461a !important;
-}
-
-/* ── KAMERA PEŁNOEKRANOWA ── */
-[data-testid="stCameraInput"] > div {
-    border-radius: 14px !important;
-    overflow: hidden !important;
-    border: 2px solid #dde6f0 !important;
-}
-[data-testid="stCameraInput"] video {
-    width: 100% !important;
-    max-height: 60vh !important;
-    object-fit: cover !important;
+button[kind="primary"]:hover {
+    background: #a8441a !important;
 }
 
-/* ── INPUTY I SELECTBOXY ── */
+/* ── FORMULARZE ── */
 [data-testid="stTextInput"] input,
-[data-testid="stTextArea"] textarea,
-[data-testid="stSelectbox"] select {
-    background: #ffffff !important;
-    border: 1px solid #c8d8e8 !important;
+[data-testid="stTextArea"] textarea {
+    background: #fff !important;
+    border: 1px solid #c8d8ec !important;
     border-radius: 8px !important;
-    color: #1a2a3a !important;
-    font-size: 14px !important;
+    color: #1a2636 !important;
 }
-[data-testid="stTextInput"] input:focus,
-[data-testid="stTextArea"] textarea:focus {
-    border-color: #0f2d4e !important;
-    box-shadow: 0 0 0 2px rgba(15,45,78,.12) !important;
+[data-testid="stTextInput"] label,
+[data-testid="stTextArea"] label,
+[data-testid="stSelectbox"] label,
+[data-testid="stDateInput"] label {
+    color: #1a2636 !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
 }
+[data-testid="stSelectbox"] > div > div {
+    background: #fff !important;
+    border: 1px solid #c8d8ec !important;
+    color: #1a2636 !important;
+}
+
+/* ── METRIC ── */
+[data-testid="stMetric"] {
+    background: #fff !important;
+    border-radius: 12px !important;
+    border: 1px solid #d6e0ec !important;
+    padding: 12px 16px !important;
+}
+[data-testid="stMetricLabel"] p { color: #4a6080 !important; font-size: 12px !important; }
+[data-testid="stMetricValue"]   { color: #0f2d4e !important; font-size: 26px !important; font-weight: 800 !important; }
 
 /* ── EXPANDER ── */
 [data-testid="stExpander"] {
-    background: #ffffff !important;
-    border: 1px solid #dde6f0 !important;
-    border-radius: 12px !important;
+    background: #fff !important;
+    border: 1px solid #d6e0ec !important;
+    border-radius: 11px !important;
     margin-bottom: 8px !important;
 }
-[data-testid="stExpander"] summary {
-    color: #0f2d4e !important;
-    font-weight: 600 !important;
-    font-size: 14px !important;
-}
+details summary span { color: #0f2d4e !important; font-weight: 600 !important; }
 
-/* ── METRYKI ── */
-[data-testid="stMetric"] {
-    background: #ffffff !important;
-    border: 1px solid #dde6f0 !important;
+/* ── TABY ── */
+[role="tab"]                           { color: #4a6080 !important; font-weight: 600 !important; }
+[role="tab"][aria-selected="true"]     { color: #c85a1e !important; border-bottom-color: #c85a1e !important; }
+
+/* ── KAMERA ── */
+[data-testid="stCameraInput"] video,
+[data-testid="stCameraInput"] img {
+    width: 100% !important;
+    max-height: 60vh !important;
+    object-fit: cover !important;
     border-radius: 12px !important;
-    padding: 14px 18px !important;
-}
-[data-testid="stMetricLabel"] {
-    color: #5a7090 !important;
-    font-size: 12px !important;
-    font-weight: 600 !important;
-    text-transform: uppercase !important;
-    letter-spacing: .04em !important;
-}
-[data-testid="stMetricValue"] {
-    color: #0f2d4e !important;
-    font-size: 28px !important;
-    font-weight: 700 !important;
-}
-
-/* ── TABS ── */
-[data-testid="stTabs"] [role="tab"] {
-    color: #5a7090 !important;
-    font-weight: 600 !important;
-    font-size: 14px !important;
-    border-radius: 8px 8px 0 0 !important;
-}
-[data-testid="stTabs"] [role="tab"][aria-selected="true"] {
-    color: #c85a1e !important;
-    border-bottom: 2px solid #c85a1e !important;
 }
 
 /* ── BADGES ── */
-.badge-krytyczny {
-    background: #ffebee; color: #b71c1c;
-    font-weight: 700; border-radius: 6px;
-    padding: 3px 10px; font-size: 11px;
-    text-transform: uppercase; letter-spacing: .04em;
-}
-.badge-wysoki {
-    background: #fff3e0; color: #e65100;
-    font-weight: 700; border-radius: 6px;
-    padding: 3px 10px; font-size: 11px;
-    text-transform: uppercase; letter-spacing: .04em;
-}
-.badge-sredni {
-    background: #fffde7; color: #f57f17;
-    font-weight: 700; border-radius: 6px;
-    padding: 3px 10px; font-size: 11px;
-    text-transform: uppercase; letter-spacing: .04em;
-}
-.badge-niski {
-    background: #e8f5e9; color: #2e7d32;
-    font-weight: 700; border-radius: 6px;
-    padding: 3px 10px; font-size: 11px;
-    text-transform: uppercase; letter-spacing: .04em;
-}
+.badge-krytyczny { background:#ffebee; color:#b71c1c; font-weight:700; border-radius:6px; padding:3px 10px; font-size:12px; }
+.badge-wysoki    { background:#fff3e0; color:#bf360c; font-weight:700; border-radius:6px; padding:3px 10px; font-size:12px; }
+.badge-sredni    { background:#fffde7; color:#e65100; font-weight:700; border-radius:6px; padding:3px 10px; font-size:12px; }
+.badge-niski     { background:#e8f5e9; color:#1b5e20; font-weight:700; border-radius:6px; padding:3px 10px; font-size:12px; }
 
-/* ── TYTUŁY STRON ── */
-h1 { color: #0f2d4e !important; font-size: 26px !important; font-weight: 800 !important; }
-h2 { color: #0f2d4e !important; font-size: 20px !important; font-weight: 700 !important; }
-h3 { color: #1a3a5c !important; font-size: 16px !important; font-weight: 700 !important; }
-
-/* ── SEPARATOR ── */
-hr { border-color: #dde6f0 !important; margin: 20px 0 !important; }
-
-/* ── INFO / SUCCESS / ERROR ── */
-[data-testid="stAlert"] {
-    border-radius: 10px !important;
-    font-size: 14px !important;
-}
+hr { border-color: #d6e0ec !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -859,114 +809,95 @@ with st.sidebar:
 # EKRAN: MENU GŁÓWNE
 # ─────────────────────────────────────────────
 if st.session_state.ekran == "menu":
-    # Nagłówek strony głównej
-    st.markdown("""
-    <div style="background:linear-gradient(135deg,#0f2d4e 0%,#1a4a7a 100%);
-                border-radius:16px;padding:28px 32px;margin-bottom:28px;
-                display:flex;align-items:center;gap:20px;">
-        <div style="font-size:48px">🦺</div>
-        <div>
-            <div style="color:#fff;font-size:26px;font-weight:800;
-                        letter-spacing:-.3px;line-height:1.1">CBZ Inspector</div>
-            <div style="color:#7ba8cc;font-size:14px;margin-top:4px">
-                Mobilny Asystent Kontroli BHP · Centrum Bezpiecznego Zatrudnienia
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Liczniki
-    protokoly_all = pobierz_protokoly()
-    otwarte_all   = pobierz_otwarte_zalecenia()
-    firmy_all     = pobierz_firmy()
-    prot_zamkn    = [p for p in protokoly_all if p[5] == "zamknięty"]
-
-    mc1, mc2, mc3, mc4 = st.columns(4)
-    mc1.metric("Protokołów", len(protokoly_all))
-    mc2.metric("Zamkniętych", len(prot_zamkn))
-    mc3.metric("Firm w bazie", len(firmy_all))
-    mc4.metric("Otwarte zalecenia", len(otwarte_all))
-
-    st.markdown("<br>", unsafe_allow_html=True)
-
-    # Karty akcji
-    # ── Statystyki ──
-    firmy_l   = pobierz_firmy()
-    prot_l    = pobierz_protokoly()
-    otw_l     = pobierz_otwarte_zalecenia()
-    fc, pc, oc = len(firmy_l), len(prot_l), len(otw_l)
-    acc = "#c85a1e" if oc > 0 else "#0f2d4e"
+    pc  = len(pobierz_protokoly())
+    fc  = len(pobierz_firmy())
+    oc  = len(pobierz_otwarte_zalecenia())
+    pz  = len(pobierz_protokoly(status="zamknięty"))
 
     st.markdown(f"""
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px">
-  <div style="background:#fff;border-radius:14px;border:1px solid #d6e0ec;
-              padding:18px;text-align:center;box-shadow:0 2px 8px rgba(15,45,78,.06)">
-    <div style="font-size:34px;font-weight:800;color:#0f2d4e;line-height:1">{pc}</div>
-    <div style="font-size:12px;color:#4a6080;margin-top:5px;text-transform:uppercase;letter-spacing:.05em">Protokołów</div>
+<div style="background:linear-gradient(135deg,#0f2d4e 0%,#1a3a5c 100%);
+            border-radius:16px;padding:24px 22px;margin-bottom:20px">
+  <div style="color:#fff;font-size:22px;font-weight:800;letter-spacing:-.3px">
+    🦺 CBZ Inspector
   </div>
-  <div style="background:#fff;border-radius:14px;border:1px solid #d6e0ec;
-              padding:18px;text-align:center;box-shadow:0 2px 8px rgba(15,45,78,.06)">
-    <div style="font-size:34px;font-weight:800;color:#0f2d4e;line-height:1">{fc}</div>
-    <div style="font-size:12px;color:#4a6080;margin-top:5px;text-transform:uppercase;letter-spacing:.05em">Firm w bazie</div>
+  <div style="color:rgba(255,255,255,.55);font-size:13px;margin-top:3px">
+    Mobilny asystent kontroli BHP
   </div>
-  <div style="background:#fff;border-radius:14px;border:1px solid #d6e0ec;
-              padding:18px;text-align:center;box-shadow:0 2px 8px rgba(15,45,78,.06)">
-    <div style="font-size:34px;font-weight:800;color:{acc};line-height:1">{oc}</div>
-    <div style="font-size:12px;color:#4a6080;margin-top:5px;text-transform:uppercase;letter-spacing:.05em">Otwartych zaleceń</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:18px">
+    <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:12px 8px;text-align:center">
+      <div style="font-size:24px;font-weight:800;color:#fff">{pc}</div>
+      <div style="font-size:10px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;margin-top:2px">Protokołów</div>
+    </div>
+    <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:12px 8px;text-align:center">
+      <div style="font-size:24px;font-weight:800;color:#fff">{pz}</div>
+      <div style="font-size:10px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;margin-top:2px">Zamkniętych</div>
+    </div>
+    <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:12px 8px;text-align:center">
+      <div style="font-size:24px;font-weight:800;color:#fff">{fc}</div>
+      <div style="font-size:10px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;margin-top:2px">Firm</div>
+    </div>
+    <div style="background:rgba(255,255,255,{'.18' if oc>0 else '.1'});border-radius:10px;
+                padding:12px 8px;text-align:center;
+                {'border:1px solid rgba(200,90,30,.7)' if oc>0 else ''}">
+      <div style="font-size:24px;font-weight:800;color:{'#f5a623' if oc>0 else '#fff'}">{oc}</div>
+      <div style="font-size:10px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;margin-top:2px">Zalecenia</div>
+    </div>
   </div>
 </div>
 """, unsafe_allow_html=True)
 
-    col1, col2 = st.columns(2)
+    # ── Duży przycisk nowej kontroli ──
+    st.markdown("""
+<div style="background:#c85a1e;border-radius:14px;padding:20px 22px;
+            margin-bottom:12px;cursor:pointer">
+  <div style="color:#fff;font-size:18px;font-weight:800">📋 Nowa kontrola</div>
+  <div style="color:rgba(255,255,255,.75);font-size:13px;margin-top:3px">
+    Stwórz protokół BHP z analizą AI zdjęć
+  </div>
+</div>""", unsafe_allow_html=True)
+    if st.button("Zacznij kontrolę →", key="m_nowa", use_container_width=True, type="primary"):
+        st.session_state.ekran = "nowy_protokol"
+        st.rerun()
+
+    st.markdown("<div style='height:6px'></div>", unsafe_allow_html=True)
+
+    # ── 3 kafelki w rzędzie ──
+    col1, col2, col3 = st.columns(3)
+
     with col1:
         st.markdown("""
-<div style="background:#fff;border-radius:14px;border:1px solid #d6e0ec;
-            padding:22px 20px;margin-bottom:14px;border-top:3px solid #c85a1e;
-            box-shadow:0 2px 8px rgba(15,45,78,.06)">
-  <div style="font-size:26px;margin-bottom:10px">📋</div>
-  <div style="font-size:16px;font-weight:700;color:#0f2d4e;margin-bottom:5px">Nowa kontrola</div>
-  <div style="font-size:13px;color:#4a6080;line-height:1.5">Stwórz nowy protokół BHP z analizą AI zdjęć</div>
+<div style="background:#fff;border-radius:12px;border:1px solid #d6e0ec;
+            padding:16px 14px;text-align:center;margin-bottom:8px">
+  <div style="font-size:24px">📁</div>
+  <div style="font-size:13px;font-weight:700;color:#0f2d4e;margin-top:6px">Archiwum</div>
 </div>""", unsafe_allow_html=True)
-        if st.button("Zacznij kontrolę →", key="m_nowa", use_container_width=True):
-            st.session_state.ekran = "nowy_protokol"
-            st.rerun()
-
-        st.markdown("<div style='height:4px'></div>", unsafe_allow_html=True)
-        st.markdown(f"""
-<div style="background:#fff;border-radius:14px;border:1px solid #d6e0ec;
-            padding:22px 20px;margin-bottom:14px;border-top:3px solid {'#c85a1e' if oc>0 else '#0f2d4e'};
-            box-shadow:0 2px 8px rgba(15,45,78,.06)">
-  <div style="font-size:26px;margin-bottom:10px">🔄</div>
-  <div style="font-size:16px;font-weight:700;color:#0f2d4e;margin-bottom:5px">Rekontrola</div>
-  <div style="font-size:13px;color:#4a6080">Otwartych zaleceń: <b style="color:#c85a1e">{oc}</b></div>
-</div>""", unsafe_allow_html=True)
-        if st.button("Przejdź do rekontroli →", key="m_rek", use_container_width=True):
-            st.session_state.ekran = "rekontrola"
+        if st.button("Otwórz", key="m_arch", use_container_width=True):
+            st.session_state.ekran = "archiwum"
             st.rerun()
 
     with col2:
         st.markdown(f"""
-<div style="background:#fff;border-radius:14px;border:1px solid #d6e0ec;
-            padding:22px 20px;margin-bottom:14px;border-top:3px solid #0f2d4e;
-            box-shadow:0 2px 8px rgba(15,45,78,.06)">
-  <div style="font-size:26px;margin-bottom:10px">📁</div>
-  <div style="font-size:16px;font-weight:700;color:#0f2d4e;margin-bottom:5px">Archiwum</div>
-  <div style="font-size:13px;color:#4a6080">Protokołów w bazie: <b style="color:#0f2d4e">{pc}</b></div>
+<div style="background:#fff;border-radius:12px;border:1px solid #d6e0ec;
+            padding:16px 14px;text-align:center;margin-bottom:8px">
+  <div style="font-size:24px">🔄</div>
+  <div style="font-size:13px;font-weight:700;color:#0f2d4e;margin-top:6px">Rekontrola</div>
+  <div style="font-size:11px;color:{'#c85a1e' if oc>0 else '#9aabb8'};margin-top:2px">
+    {"⚠ "+str(oc)+" otwartych" if oc>0 else "Brak"}
+  </div>
 </div>""", unsafe_allow_html=True)
-        if st.button("Przeglądaj archiwum →", key="m_arch", use_container_width=True):
-            st.session_state.ekran = "archiwum"
+        if st.button("Otwórz", key="m_rek", use_container_width=True):
+            st.session_state.ekran = "rekontrola"
             st.rerun()
 
-        st.markdown("<div style='height:4px'></div>", unsafe_allow_html=True)
+    with col3:
         st.markdown(f"""
-<div style="background:#fff;border-radius:14px;border:1px solid #d6e0ec;
-            padding:22px 20px;margin-bottom:14px;border-top:3px solid #0f2d4e;
-            box-shadow:0 2px 8px rgba(15,45,78,.06)">
-  <div style="font-size:26px;margin-bottom:10px">🏢</div>
-  <div style="font-size:16px;font-weight:700;color:#0f2d4e;margin-bottom:5px">Baza firm</div>
-  <div style="font-size:13px;color:#4a6080">Firm w bazie: <b style="color:#0f2d4e">{fc}</b></div>
+<div style="background:#fff;border-radius:12px;border:1px solid #d6e0ec;
+            padding:16px 14px;text-align:center;margin-bottom:8px">
+  <div style="font-size:24px">🏢</div>
+  <div style="font-size:13px;font-weight:700;color:#0f2d4e;margin-top:6px">Firmy</div>
+  <div style="font-size:11px;color:#9aabb8;margin-top:2px">{fc} w bazie</div>
 </div>""", unsafe_allow_html=True)
-        if st.button("Zarządzaj firmami →", key="m_firmy", use_container_width=True):
+        if st.button("Otwórz", key="m_firmy", use_container_width=True):
             st.session_state.ekran = "firmy"
             st.rerun()
 
