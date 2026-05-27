@@ -600,44 +600,217 @@ def wyslij_email(do, temat, tresc, zalacznik_bytes, nazwa_pliku):
 # ─────────────────────────────────────────────
 st.markdown("""
 <style>
-/* Ogólne */
-[data-testid="stAppViewContainer"] { background: #f4f7fb; }
-[data-testid="stSidebar"] { background: #0f2d4e !important; }
-[data-testid="stSidebar"] * { color: #c8d8ea !important; }
+/* ── RESET I BAZA ── */
+html, body, [data-testid="stAppViewContainer"] {
+    background-color: #f0f4f8 !important;
+}
+/* Wszystkie teksty widoczne */
+[data-testid="stAppViewContainer"] h1,
+[data-testid="stAppViewContainer"] h2,
+[data-testid="stAppViewContainer"] h3,
+[data-testid="stAppViewContainer"] p,
+[data-testid="stAppViewContainer"] label,
+[data-testid="stAppViewContainer"] .stMarkdown,
+[data-testid="stAppViewContainer"] .stText,
+[data-testid="stAppViewContainer"] div {
+    color: #1a2a3a !important;
+}
+
+/* ── SIDEBAR ── */
+[data-testid="stSidebar"] {
+    background: #0f2d4e !important;
+    border-right: none !important;
+}
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3,
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] div,
+[data-testid="stSidebar"] span,
+[data-testid="stSidebar"] label {
+    color: #c8d8ea !important;
+}
 [data-testid="stSidebar"] .stButton > button {
-    width: 100%; background: rgba(255,255,255,.07);
-    border: 1px solid rgba(255,255,255,.15); border-radius: 10px;
-    color: #fff !important; font-weight: 600; margin-bottom: 4px;
-    text-align: left; padding: 10px 14px; font-size: 15px;
+    width: 100% !important;
+    background: rgba(255,255,255,.06) !important;
+    border: 1px solid rgba(255,255,255,.12) !important;
+    border-radius: 10px !important;
+    color: #e8f0f8 !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    margin-bottom: 4px !important;
+    text-align: left !important;
+    padding: 10px 14px !important;
+    transition: all .15s !important;
 }
 [data-testid="stSidebar"] .stButton > button:hover {
-    background: rgba(200,90,30,.25); border-color: rgba(200,90,30,.5);
+    background: rgba(200,90,30,.3) !important;
+    border-color: #c85a1e !important;
+    color: #fff !important;
 }
-/* Karty */
+
+/* ── KARTY MENU ── */
 .cbz-card {
-    background: #fff; border-radius: 14px;
-    border: 1px solid #dde4ee; padding: 18px 20px; margin-bottom: 14px;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #dde6f0;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(15,45,78,.06);
 }
-/* Priorytet badge */
-.badge-krytyczny { background:#ffebee; color:#c62828; font-weight:700;
-    border-radius:6px; padding:3px 10px; font-size:12px; }
-.badge-wysoki { background:#fff3e0; color:#e65100; font-weight:700;
-    border-radius:6px; padding:3px 10px; font-size:12px; }
-.badge-sredni { background:#fffde7; color:#f57f17; font-weight:700;
-    border-radius:6px; padding:3px 10px; font-size:12px; }
-.badge-niski { background:#e8f5e9; color:#2e7d32; font-weight:700;
-    border-radius:6px; padding:3px 10px; font-size:12px; }
-/* Kamera — większa */
-[data-testid="stCameraInput"] video,
-[data-testid="stCameraInput"] img {
-    width: 100% !important; max-height: 65vh !important; object-fit: cover;
-    border-radius: 12px;
+.cbz-card h3 {
+    color: #0f2d4e !important;
+    font-size: 17px !important;
+    margin-bottom: 6px !important;
 }
-/* Przyciski główne */
-.stButton > button[kind="primary"] {
-    background: #c85a1e !important; border: none !important;
-    border-radius: 12px !important; font-size: 16px !important;
-    font-weight: 700 !important; padding: 14px !important;
+.cbz-card p, .cbz-card div {
+    color: #4a6080 !important;
+    font-size: 14px !important;
+}
+
+/* ── PRZYCISKI GLOBALNE ── */
+.stButton > button {
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    padding: 10px 18px !important;
+    border: 1px solid #c0cfe0 !important;
+    background: #ffffff !important;
+    color: #0f2d4e !important;
+    transition: all .15s !important;
+}
+.stButton > button:hover {
+    background: #0f2d4e !important;
+    color: #ffffff !important;
+    border-color: #0f2d4e !important;
+}
+/* Primary button */
+.stButton > button[kind="primary"],
+button[data-testid="baseButton-primary"] {
+    background: #c85a1e !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    padding: 13px 20px !important;
+    box-shadow: 0 3px 10px rgba(200,90,30,.25) !important;
+}
+.stButton > button[kind="primary"]:hover {
+    background: #a8461a !important;
+}
+
+/* ── KAMERA PEŁNOEKRANOWA ── */
+[data-testid="stCameraInput"] > div {
+    border-radius: 14px !important;
+    overflow: hidden !important;
+    border: 2px solid #dde6f0 !important;
+}
+[data-testid="stCameraInput"] video {
+    width: 100% !important;
+    max-height: 60vh !important;
+    object-fit: cover !important;
+}
+
+/* ── INPUTY I SELECTBOXY ── */
+[data-testid="stTextInput"] input,
+[data-testid="stTextArea"] textarea,
+[data-testid="stSelectbox"] select {
+    background: #ffffff !important;
+    border: 1px solid #c8d8e8 !important;
+    border-radius: 8px !important;
+    color: #1a2a3a !important;
+    font-size: 14px !important;
+}
+[data-testid="stTextInput"] input:focus,
+[data-testid="stTextArea"] textarea:focus {
+    border-color: #0f2d4e !important;
+    box-shadow: 0 0 0 2px rgba(15,45,78,.12) !important;
+}
+
+/* ── EXPANDER ── */
+[data-testid="stExpander"] {
+    background: #ffffff !important;
+    border: 1px solid #dde6f0 !important;
+    border-radius: 12px !important;
+    margin-bottom: 8px !important;
+}
+[data-testid="stExpander"] summary {
+    color: #0f2d4e !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+}
+
+/* ── METRYKI ── */
+[data-testid="stMetric"] {
+    background: #ffffff !important;
+    border: 1px solid #dde6f0 !important;
+    border-radius: 12px !important;
+    padding: 14px 18px !important;
+}
+[data-testid="stMetricLabel"] {
+    color: #5a7090 !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: .04em !important;
+}
+[data-testid="stMetricValue"] {
+    color: #0f2d4e !important;
+    font-size: 28px !important;
+    font-weight: 700 !important;
+}
+
+/* ── TABS ── */
+[data-testid="stTabs"] [role="tab"] {
+    color: #5a7090 !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    border-radius: 8px 8px 0 0 !important;
+}
+[data-testid="stTabs"] [role="tab"][aria-selected="true"] {
+    color: #c85a1e !important;
+    border-bottom: 2px solid #c85a1e !important;
+}
+
+/* ── BADGES ── */
+.badge-krytyczny {
+    background: #ffebee; color: #b71c1c;
+    font-weight: 700; border-radius: 6px;
+    padding: 3px 10px; font-size: 11px;
+    text-transform: uppercase; letter-spacing: .04em;
+}
+.badge-wysoki {
+    background: #fff3e0; color: #e65100;
+    font-weight: 700; border-radius: 6px;
+    padding: 3px 10px; font-size: 11px;
+    text-transform: uppercase; letter-spacing: .04em;
+}
+.badge-sredni {
+    background: #fffde7; color: #f57f17;
+    font-weight: 700; border-radius: 6px;
+    padding: 3px 10px; font-size: 11px;
+    text-transform: uppercase; letter-spacing: .04em;
+}
+.badge-niski {
+    background: #e8f5e9; color: #2e7d32;
+    font-weight: 700; border-radius: 6px;
+    padding: 3px 10px; font-size: 11px;
+    text-transform: uppercase; letter-spacing: .04em;
+}
+
+/* ── TYTUŁY STRON ── */
+h1 { color: #0f2d4e !important; font-size: 26px !important; font-weight: 800 !important; }
+h2 { color: #0f2d4e !important; font-size: 20px !important; font-weight: 700 !important; }
+h3 { color: #1a3a5c !important; font-size: 16px !important; font-weight: 700 !important; }
+
+/* ── SEPARATOR ── */
+hr { border-color: #dde6f0 !important; margin: 20px 0 !important; }
+
+/* ── INFO / SUCCESS / ERROR ── */
+[data-testid="stAlert"] {
+    border-radius: 10px !important;
+    font-size: 14px !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -686,47 +859,117 @@ with st.sidebar:
 # EKRAN: MENU GŁÓWNE
 # ─────────────────────────────────────────────
 if st.session_state.ekran == "menu":
-    st.title("🦺 CBZ Inspector")
-    st.markdown("### Mobilny Asystent Kontroli BHP")
-    st.markdown("---")
+    # Nagłówek strony głównej
+    st.markdown("""
+    <div style="background:linear-gradient(135deg,#0f2d4e 0%,#1a4a7a 100%);
+                border-radius:16px;padding:28px 32px;margin-bottom:28px;
+                display:flex;align-items:center;gap:20px;">
+        <div style="font-size:48px">🦺</div>
+        <div>
+            <div style="color:#fff;font-size:26px;font-weight:800;
+                        letter-spacing:-.3px;line-height:1.1">CBZ Inspector</div>
+            <div style="color:#7ba8cc;font-size:14px;margin-top:4px">
+                Mobilny Asystent Kontroli BHP · Centrum Bezpiecznego Zatrudnienia
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Liczniki
+    protokoly_all = pobierz_protokoly()
+    otwarte_all   = pobierz_otwarte_zalecenia()
+    firmy_all     = pobierz_firmy()
+    prot_zamkn    = [p for p in protokoly_all if p[5] == "zamknięty"]
+
+    mc1, mc2, mc3, mc4 = st.columns(4)
+    mc1.metric("Protokołów", len(protokoly_all))
+    mc2.metric("Zamkniętych", len(prot_zamkn))
+    mc3.metric("Firm w bazie", len(firmy_all))
+    mc4.metric("Otwarte zalecenia", len(otwarte_all))
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # Karty akcji
+    # ── Statystyki ──
+    firmy_l   = pobierz_firmy()
+    prot_l    = pobierz_protokoly()
+    otw_l     = pobierz_otwarte_zalecenia()
+    fc, pc, oc = len(firmy_l), len(prot_l), len(otw_l)
+    acc = "#c85a1e" if oc > 0 else "#0f2d4e"
+
+    st.markdown(f"""
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px">
+  <div style="background:#fff;border-radius:14px;border:1px solid #d6e0ec;
+              padding:18px;text-align:center;box-shadow:0 2px 8px rgba(15,45,78,.06)">
+    <div style="font-size:34px;font-weight:800;color:#0f2d4e;line-height:1">{pc}</div>
+    <div style="font-size:12px;color:#4a6080;margin-top:5px;text-transform:uppercase;letter-spacing:.05em">Protokołów</div>
+  </div>
+  <div style="background:#fff;border-radius:14px;border:1px solid #d6e0ec;
+              padding:18px;text-align:center;box-shadow:0 2px 8px rgba(15,45,78,.06)">
+    <div style="font-size:34px;font-weight:800;color:#0f2d4e;line-height:1">{fc}</div>
+    <div style="font-size:12px;color:#4a6080;margin-top:5px;text-transform:uppercase;letter-spacing:.05em">Firm w bazie</div>
+  </div>
+  <div style="background:#fff;border-radius:14px;border:1px solid #d6e0ec;
+              padding:18px;text-align:center;box-shadow:0 2px 8px rgba(15,45,78,.06)">
+    <div style="font-size:34px;font-weight:800;color:{acc};line-height:1">{oc}</div>
+    <div style="font-size:12px;color:#4a6080;margin-top:5px;text-transform:uppercase;letter-spacing:.05em">Otwartych zaleceń</div>
+  </div>
+</div>
+""", unsafe_allow_html=True)
 
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown('<div class="cbz-card">', unsafe_allow_html=True)
-        st.markdown("### 📋 Nowa kontrola")
-        st.markdown("Stwórz nowy protokół z analizą AI zdjęć")
-        if st.button("Zacznij kontrolę →", use_container_width=True):
+        st.markdown("""
+<div style="background:#fff;border-radius:14px;border:1px solid #d6e0ec;
+            padding:22px 20px;margin-bottom:14px;border-top:3px solid #c85a1e;
+            box-shadow:0 2px 8px rgba(15,45,78,.06)">
+  <div style="font-size:26px;margin-bottom:10px">📋</div>
+  <div style="font-size:16px;font-weight:700;color:#0f2d4e;margin-bottom:5px">Nowa kontrola</div>
+  <div style="font-size:13px;color:#4a6080;line-height:1.5">Stwórz nowy protokół BHP z analizą AI zdjęć</div>
+</div>""", unsafe_allow_html=True)
+        if st.button("Zacznij kontrolę →", key="m_nowa", use_container_width=True):
             st.session_state.ekran = "nowy_protokol"
             st.rerun()
-        st.markdown('</div>', unsafe_allow_html=True)
 
-        st.markdown('<div class="cbz-card">', unsafe_allow_html=True)
-        st.markdown("### 🔄 Rekontrola")
-        otwarte = pobierz_otwarte_zalecenia()
-        st.markdown(f"Otwartych zaleceń: **{len(otwarte)}**")
-        if st.button("Przejdź do rekontroli →", use_container_width=True):
+        st.markdown("<div style='height:4px'></div>", unsafe_allow_html=True)
+        st.markdown(f"""
+<div style="background:#fff;border-radius:14px;border:1px solid #d6e0ec;
+            padding:22px 20px;margin-bottom:14px;border-top:3px solid {'#c85a1e' if oc>0 else '#0f2d4e'};
+            box-shadow:0 2px 8px rgba(15,45,78,.06)">
+  <div style="font-size:26px;margin-bottom:10px">🔄</div>
+  <div style="font-size:16px;font-weight:700;color:#0f2d4e;margin-bottom:5px">Rekontrola</div>
+  <div style="font-size:13px;color:#4a6080">Otwartych zaleceń: <b style="color:#c85a1e">{oc}</b></div>
+</div>""", unsafe_allow_html=True)
+        if st.button("Przejdź do rekontroli →", key="m_rek", use_container_width=True):
             st.session_state.ekran = "rekontrola"
             st.rerun()
-        st.markdown('</div>', unsafe_allow_html=True)
 
     with col2:
-        st.markdown('<div class="cbz-card">', unsafe_allow_html=True)
-        st.markdown("### 📁 Archiwum")
-        protokoly = pobierz_protokoly()
-        st.markdown(f"Protokołów w bazie: **{len(protokoly)}**")
-        if st.button("Przeglądaj archiwum →", use_container_width=True):
+        st.markdown(f"""
+<div style="background:#fff;border-radius:14px;border:1px solid #d6e0ec;
+            padding:22px 20px;margin-bottom:14px;border-top:3px solid #0f2d4e;
+            box-shadow:0 2px 8px rgba(15,45,78,.06)">
+  <div style="font-size:26px;margin-bottom:10px">📁</div>
+  <div style="font-size:16px;font-weight:700;color:#0f2d4e;margin-bottom:5px">Archiwum</div>
+  <div style="font-size:13px;color:#4a6080">Protokołów w bazie: <b style="color:#0f2d4e">{pc}</b></div>
+</div>""", unsafe_allow_html=True)
+        if st.button("Przeglądaj archiwum →", key="m_arch", use_container_width=True):
             st.session_state.ekran = "archiwum"
             st.rerun()
-        st.markdown('</div>', unsafe_allow_html=True)
 
-        st.markdown('<div class="cbz-card">', unsafe_allow_html=True)
-        st.markdown("### 🏢 Baza firm")
-        firmy = pobierz_firmy()
-        st.markdown(f"Firm w bazie: **{len(firmy)}**")
-        if st.button("Zarządzaj firmami →", use_container_width=True):
+        st.markdown("<div style='height:4px'></div>", unsafe_allow_html=True)
+        st.markdown(f"""
+<div style="background:#fff;border-radius:14px;border:1px solid #d6e0ec;
+            padding:22px 20px;margin-bottom:14px;border-top:3px solid #0f2d4e;
+            box-shadow:0 2px 8px rgba(15,45,78,.06)">
+  <div style="font-size:26px;margin-bottom:10px">🏢</div>
+  <div style="font-size:16px;font-weight:700;color:#0f2d4e;margin-bottom:5px">Baza firm</div>
+  <div style="font-size:13px;color:#4a6080">Firm w bazie: <b style="color:#0f2d4e">{fc}</b></div>
+</div>""", unsafe_allow_html=True)
+        if st.button("Zarządzaj firmami →", key="m_firmy", use_container_width=True):
             st.session_state.ekran = "firmy"
             st.rerun()
-        st.markdown('</div>', unsafe_allow_html=True)
+
 
 # ─────────────────────────────────────────────
 # EKRAN: FIRMY
