@@ -723,12 +723,12 @@ elif st.session_state.ekran == "nowy":
         with tab3:
             adr = st.text_input("E-mail odbiorcy", value=prow[16] or "")
             tem = st.text_input("Temat", value=f"Protokol BHP {prow[2]} — {prow[12]}")
-            tre = st.text_area("Tresc", value=f"Dzien dobry,
-
-W zalaczeniu protokol BHP z {prow[3]}, {prow[12]}.
-
-Z powazaniem
-{prow[6]}", height=120)
+            tre_default = (
+                "Dzien dobry,\n\n"
+                f"W zalaczeniu protokol BHP z {prow[3]}, {prow[12]}.\n\n"
+                f"Z powazaniem\n{prow[6]}"
+            )
+            tre = st.text_area("Tresc", value=tre_default, height=120)
             fmt = st.radio("Zalacznik", ["PDF","Word"], horizontal=True)
             c1,c2 = st.columns(2)
             with c1:
